@@ -110,6 +110,7 @@ export default function App() {
     features: false,
     calculator: false,
   });
+  const [itemsPerSlide, setItemsPerSlide] = useState(3); // Fijo para SSR
 
   const features = [
     {
@@ -182,31 +183,33 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
+  // Actualiza itemsPerSlide solo en cliente
+  useEffect(() => {
+    const updateItems = () => {
+      if (window.innerWidth >= 1024) setItemsPerSlide(3);
+      else if (window.innerWidth >= 768) setItemsPerSlide(2);
+      else setItemsPerSlide(1);
+    };
+    updateItems();
+    window.addEventListener('resize', updateItems);
+    return () => window.removeEventListener('resize', updateItems);
+  }, []);
+
   // Auto-slide functionality
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % Math.ceil(features.length / getItemsPerSlide()));
+      setCurrentSlide((prev) => (prev + 1) % Math.ceil(features.length / itemsPerSlide));
     }, 5000);
-
     return () => clearInterval(timer);
-  }, [features.length]);
-
-  const getItemsPerSlide = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth >= 1024) return 3;
-      if (window.innerWidth >= 768) return 2;
-      return 1;
-    }
-    return 3;
-  };
+  }, [features.length, itemsPerSlide]);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.ceil(features.length / getItemsPerSlide()));
+    setCurrentSlide((prev) => (prev + 1) % Math.ceil(features.length / itemsPerSlide));
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) =>
-      prev === 0 ? Math.ceil(features.length / getItemsPerSlide()) - 1 : prev - 1
+      prev === 0 ? Math.ceil(features.length / itemsPerSlide) - 1 : prev - 1
     );
   };
 
@@ -331,13 +334,13 @@ export default function App() {
                     transform: `translateX(-${currentSlide * 100}%)`,
                   }}
                 >
-                  {Array.from({ length: Math.ceil(features.length / getItemsPerSlide()) }).map((_, slideIndex) => (
+                  {Array.from({ length: Math.ceil(features.length / itemsPerSlide) }).map((_, slideIndex) => (
                     <div key={slideIndex} className="w-full flex-shrink-0">
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
                         {features
                           .slice(
-                            slideIndex * getItemsPerSlide(),
-                            (slideIndex + 1) * getItemsPerSlide()
+                            slideIndex * itemsPerSlide,
+                            (slideIndex + 1) * itemsPerSlide
                           )
                           .map((feature, index) => (
                             <div key={index} className="group relative h-full">
@@ -388,7 +391,7 @@ export default function App() {
 
               {/* Dots Indicator */}
               <div className="flex justify-center mt-12 gap-3">
-                {Array.from({ length: Math.ceil(features.length / getItemsPerSlide()) }).map((_, index) => (
+                {Array.from({ length: Math.ceil(features.length / itemsPerSlide) }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
