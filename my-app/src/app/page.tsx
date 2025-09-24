@@ -20,11 +20,6 @@ const Header = () => {
       }`}>
       <nav className="container mx-auto px-6 flex justify-between items-center py-4">
         <div className="flex items-center gap-4 group">
-          <div className="w-12 h-12 bg-gradient-to-br from-green-400 via-green-500 to-green-600 rounded-full flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
-            <div className="absolute inset-0 bg-gradient-to-br from-green-300 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <span className="text-black font-bold text-lg relative z-10">R</span>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-full group-hover:-translate-x-full transition-transform duration-1000"></div>
-          </div>
           <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 via-green-300 to-green-500 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
             RANNA TOKEN
           </h1>
