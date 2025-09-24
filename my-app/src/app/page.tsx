@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import { TrendingUp, Shield, Zap, Globe, Gem, Target, ChevronLeft, ChevronRight, Calculator, Wallet, Menu, X } from 'lucide-react';
 
 const Header = () => {
@@ -49,7 +50,23 @@ const Header = () => {
         </button>
 
         {/* Connect Wallet Button */}
-        <button className="hidden md:flex items-center gap-2 bg-gradient-to-r from-green-400 to-green-500 text-black px-6 py-3 rounded-full font-bold hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-400/40 transition-all duration-300 group relative overflow-hidden">
+        <button
+          className="hidden md:flex items-center gap-2 bg-gradient-to-r from-green-400 to-green-500 text-black px-6 py-3 rounded-full font-bold hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-400/40 transition-all duration-300 group relative overflow-hidden"
+          onClick={() => Swal.fire({
+            title: 'Estamos trabajando en ello',
+            background: '#000',
+            color: '#22c55e',
+            icon: 'info',
+            iconColor: '#22c55e',
+            confirmButtonColor: '#22c55e',
+            confirmButtonText: 'Cerrar',
+            customClass: {
+              popup: 'rounded-2xl',
+              title: 'font-bold',
+              confirmButton: 'font-bold',
+            },
+          })}
+        >
           <span className="relative z-10 flex items-center gap-2">
             <Wallet size={18} className="group-hover:rotate-12 transition-transform duration-300" />
             Connect Wallet
@@ -73,7 +90,23 @@ const Header = () => {
               ))}
             </ul>
             <div className="px-6 pb-4">
-              <button className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-400 to-green-500 text-black px-6 py-3 rounded-full font-bold">
+              <button
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-400 to-green-500 text-black px-6 py-3 rounded-full font-bold"
+                onClick={() => Swal.fire({
+                  title: 'Estamos trabajando en ello',
+                  background: '#000',
+                  color: '#22c55e',
+                  icon: 'info',
+                  iconColor: '#22c55e',
+                  confirmButtonColor: '#22c55e',
+                  confirmButtonText: 'Cerrar',
+                  customClass: {
+                    popup: 'rounded-2xl',
+                    title: 'font-bold',
+                    confirmButton: 'font-bold',
+                  },
+                })}
+              >
                 <Wallet size={18} />
                 Connect Wallet
               </button>
@@ -269,7 +302,23 @@ export default function App() {
                 </div>
 
                 <div className="pt-4">
-                  <button className="group relative bg-gradient-to-r from-green-400 via-green-500 to-emerald-500 text-black px-10 py-5 rounded-full text-xl font-bold hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-400/40 transition-all duration-300 overflow-hidden">
+                  <button
+                    className="group relative bg-gradient-to-r from-green-400 via-green-500 to-emerald-500 text-black px-10 py-5 rounded-full text-xl font-bold hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-400/40 transition-all duration-300 overflow-hidden"
+                    onClick={() => Swal.fire({
+                      title: 'Estamos trabajando en ello',
+                      background: '#000',
+                      color: '#22c55e',
+                      icon: 'info',
+                      iconColor: '#22c55e',
+                      confirmButtonColor: '#22c55e',
+                      confirmButtonText: 'Cerrar',
+                      customClass: {
+                        popup: 'rounded-2xl',
+                        title: 'font-bold',
+                        confirmButton: 'font-bold',
+                      },
+                    })}
+                  >
                     <span className="relative z-10 flex items-center gap-3">
                       <TrendingUp className="group-hover:scale-110 transition-transform duration-300" size={24} />
                       Invest Now
@@ -507,7 +556,23 @@ export default function App() {
               </p>
 
               <div className="pt-4">
-                <button className="group relative bg-black text-green-400 px-12 py-5 rounded-full text-xl font-bold hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/40 transition-all duration-300 overflow-hidden">
+                <button
+                  className="group relative bg-black text-green-400 px-12 py-5 rounded-full text-xl font-bold hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/40 transition-all duration-300 overflow-hidden"
+                  onClick={() => Swal.fire({
+                    title: 'Estamos trabajando en ello',
+                    background: '#000',
+                    color: '#22c55e',
+                    icon: 'info',
+                    iconColor: '#22c55e',
+                    confirmButtonColor: '#22c55e',
+                    confirmButtonText: 'Cerrar',
+                    customClass: {
+                      popup: 'rounded-2xl',
+                      title: 'font-bold',
+                      confirmButton: 'font-bold',
+                    },
+                  })}
+                >
                   <span className="relative z-10 flex items-center gap-3">
                     <Gem className="group-hover:rotate-12 transition-transform duration-300" size={24} />
                     Buy Ranna Token
